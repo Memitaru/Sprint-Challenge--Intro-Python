@@ -34,12 +34,14 @@ def cityreader(cities=[]):
   with open('cities.csv', newline='') as city_csv:
     reader = csv.DictReader(city_csv)
     for row in reader:
-        new_city = City(row["city"], row["lat"], row["lng"])
+        new_city = City(row["city"], float(row["lat"]), float(row["lng"]))
         cities.append(new_city)
     
     return cities
 
 cityreader(cities)
+
+# Had to turn lat and lng to floats to pass test
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
